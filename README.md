@@ -14,15 +14,6 @@ FROM employees
 WHERE hire_date > ADD_MONTHS(TRUNC(SYSDATE), -240);
 
 
-https://ouconnect.oracle.com/
-
-Enter in user name: 98789336.user01 ... 98789336.user30
-Enter in password: DbI6TkjZTJ (same for all users)
-
-
-oracle
-OU98789336
-
 ------------------------------------------------------
 
 Use the ALTER TABLE statement to:
@@ -702,6 +693,459 @@ boolean
 	char
 
 -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+
+StringBuilder name = new StringBuilder("K");	- not thread safe..	JDK1.5
+StringBuffer StringBuffer is designed as thread-safe 
+
+class Hello
+{
+	int num1=900;
+}
+class DemoVariables extennds Hello
+{
+	//instance variable
+	static int num2=200;	//class variables -- only one copy of this will remain in memory
+
+	
+	public void display(Demo d1)
+	{
+	
+		super.num1++;
+		
+	}
+	public void changeNumbers()
+	{
+		num2++;
+	}
+	public void display(){
+		System.out.println("Num1 :"+num1);
+		System.out.println("Num2 :"+num2);
+	}
+	public static void main(String args[])
+	{
+		Demo d1 = new Demo();
+		Demo d2 = new Demo();
+		d1.changeNumbers();
+		d1.display(d2);
+		d1.changeNumbers();
+		d1.display();
+		d2.display();
+		System.out.println(d1.num1+d1.num2+d2.num1+d2.num2);
+	
+	}
+}
+
+--------------------
+
+
+Blocks
+
+	initlizatizer
+	static initlizatizer
+
+
+
+
+
+
+-------------------------------------------------
+
+Abstract class and methods
+
+
+
+Object class and its methods
+-----------------------------------
+
+toString()
+equals
+hashCode
+clone
+
+
+
+Product extends Object
+
+
+
+
+
+
+
+Generics
+Comparable
+Comparator
+java.lang.Cloneable
+
+
+
+
+-------------------------------------------
+
+Comparator
+	- java.util
+	- sort based on your requirements
+	- functional interface
+	- contains only one abstract method
+
+
+
+
+
+
+model
+	
+
+	
+
+	Employee
+		properties
+		getters ands setter
+
+
+
+	EmployeeService
+	
+		saveEmployee(Employee employee)
+		return true;
+
+		calculateSalat(sal)
+		return	 		
+
+
+	main()
+		Enter emp id;
+		Enter emp name
+
+		Employee employee = new Employee(empId,empName);
+
+		EmployeeService empService = new EmployeeService();
+		empService.saveEmployee(employee);
+
+	
+		
+		
+
+
+Collection
+	
+	List<accept duplicate>
+		ArrayList	<iteration>, not thread safe
+		LinkedList <frequent insertion or deletion>
+		Vector - Vector is synchronized, meaning its methods are thread-safe
+
+	Set
+		HashSet < no order>
+		LinkedHashSet <order is maintained>
+		TreeSet <ordered>
+
+
+
+java.lang
+	- Comparable 
+		- compare
+
+
+
+
+
+
+Map (no duplicates - key)
+-------------
+	HashMap ( no order) - not thread safe, not sync
+	TreeMap (sorted)
+	LinkedHashmap ( order is maintained)
+	HashTable (Sync  thread safe)
+
+Key value
+
+employeeId
+salary
+
+
+
+
+
+
+----------
+
+Split Iterator 
+
+
+
+import java.util.ArrayList;
+import java.util.Spliterator;
+import java.util.Arrays;
+
+public class SplitIteratorDemo {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+
+        Spliterator<Integer> splitIterator = numbers.spliterator();
+
+        // Split the iterator
+        Spliterator<Integer> splitIterator2 = splitIterator.trySplit();
+
+        // Process the first half (using tryAdvance)
+        System.out.println("First half:");
+        while (splitIterator.tryAdvance(System.out::println));
+
+        // Process the second half (using forEachRemaining)
+        System.out.println("\nSecond half:");
+        if (splitIterator2 != null) {
+            splitIterator2.forEachRemaining(System.out::println);
+        }
+    }
+}
+
+
+
+----------------------
+
+ Runtime r = Runtime.getRuntime();
+        int numOfHardwareThreads = r.availableProcessors();
+        System.out.println(numOfHardwareThreads);
+
+----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Threading
+
+java.lang.Thread	- run		class
+java.lang.Runnable	- run		interface
+
+
+class Food extends extends Thread
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+Enter your name (30 seconds) : Neha
+
+Welcome, Neha
+
+after 30 seconds
+Better luck next time
+
+
+
+
+wait
+notify
+
+
+
+
+-----------------------------
+
+
+ResultSet 	= statement.executeQuery(select)
+int	statement.executeUpdate(DML)
+boolean 	statement.execute(DDL)
+
+
+
+
+PreparedStatement 		- ?
+
+
+
+-------------------------------------------------------------
+
+Modules
+
+productlist
+productdetails
+
+
+package com.training.plist;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductList {
+		
+	public static List<String> getProductList() {
+		List<String> products = new ArrayList();
+			products.add("Lakme");
+			products.add("Aroma");
+			products.add("Glass");
+			return products;
+	}
+}
+
+
+module productlist {
+exports com.training.plist;
+}
+
+
+module productdetails {
+requires productlist;
+}
+
+
+
+productdetails
+
+
+
+
+
+
+**error will come . Hover and click fix project setup  Ok
+
+
+package com.training.pdetails;
+
+import java.util.List;
+
+import com.training.plist.ProductList;
+
+public class PrinntProductDetails {
+
+	public static void main(String[] args) {
+		List<String> products = ProductList.getProductList();
+		
+		System.out.println(products);
+	}
+
+}
+
+
+------------
+java.io package
+
+--------------
+
+Annotation
+
+
+
+A Spliterator in Java 8 and later is an interface that allows for parallel processing of data by splitting it into smaller chunks. It's an iterator with added capabilities for determining the size of the data source and splitting it into sub-Spliterators. This makes it ideal for use with parallel streams, enabling efficient processing of large datasets across multiple threads
+
+
+
+
+Statement	- static SQL
+Prepp		- PARAMTERIZED
+CallableStatement	
+
+
+--------------------
+
+Annotation
+@override	- meta data information
+
+
+
+
+Modules
+
+
+
+
+Step1 : create new module named productlist
+Step2: create a new file inside src/main/java	- module-info.java
+Step3: create a class 
+
+package com.training.plist;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductList {
+		
+	public static List<String> getProductList() {
+		List<String> products = new ArrayList();
+			products.add("Lakme");
+			products.add("Aroma");
+			products.add("Glass");
+			return products;
+	}
+}
+
+Step4: update module-info.java
+module productlist {
+    exports com.training.plist;
+}
+
+Stp6 : Create another module named productdetails 
+** use differennt name in package grooup id : com.hello
+Step7 : create a new file inside src/main/java	- module-info.java
+module productdetails {
+    requires productlist;
+}
+Step8:open com.hello.Main.java
+        System.out.println(ProductList.getProductList());
+Step9: error will come, hover mouse and select -> add dependency
+Step10 : add import com.training.plist.ProductList;
+
+
+
+
+
+
+
+------------------
+I/O
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

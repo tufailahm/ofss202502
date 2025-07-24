@@ -3,23 +3,24 @@ package com.training;
 
 import com.training.finance.*;
 import com.training.hr.*;
+import com.training.inheritDemos.Product;
+import com.training.ofss.util.OracleDbConnection;
 
+import java.io.*;
+import java.sql.Connection;
 import java.util.Date;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        System.out.println("Welcome in Main");
-        Account account = new Account();
-        account.openAccount();
-        Trainee trainee = new Trainee();
-        trainee.markAttendance();
-        com.training.finance.Employee employee = new com.training.finance.Employee();
-
-        Date d = new Date();
-        System.out.println(d);
+        Product product = new Product(11,"Sunscreen",1, 450);
+        ObjectOutputStream stream =
+                new ObjectOutputStream(
+                        new FileOutputStream(new File("c:\\logs\\product.txt")));
+        stream.writeObject(product);
+        System.out.println("Product saved in file");
 
     }
 }

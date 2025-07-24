@@ -20,8 +20,6 @@ public class Account {
         name1.concat(" Kochhar");
         System.out.println(name1.concat(" Karthick"));
        name1 = name1.concat("LLL ");
-
-
     }
 
     public static void main(String[] args) {
