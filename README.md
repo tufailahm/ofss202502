@@ -1173,3 +1173,48 @@ I/O
 
 
 
+REST API
+----------------
+
+Expose REST API to perfrom  CRUD operation on product.
+
+http://localhost:8080/product				- GET ALL THE PRODUCTS
+http://localhost:8080/product/90			- GET A SINGLE PRODUCT By ID
+http://localhost:8080/product/90/100			- GET A SINGLE PRODUCT By ID
+
+
+To do
+http://localhost:8080/product	/search/Mouse		- GET ALL PRODUCT By NAME	
+
+http://localhost:8080/product/90			- DELETE A SINGLE PRODUCT By ID	- DELETE
+http://localhost:8080/product/			- SAVE A SINGLE PRODUCT 		- POST
+http://localhost:8080/product/			- UPDATE A SINGLE PRODUCT 	- PUT
+
+
+
+
+Swagger
+---------------
+
+http://localhost:8080/swagger-ui/index.html
+
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
+
+
+http://localhost:8080/v3/api-docs
+
+
+------------------Status codes
+
+200		- su
+300		- 
+400		- error
+500		- internal server codes
+
+
