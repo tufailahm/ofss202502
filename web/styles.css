@@ -1,0 +1,36 @@
+body
+{
+    background-image: url('oracle-office.jpg');
+}
+h1,h2 {
+    color: red;
+}
+tufail {
+    color: blue;
+}
+.highlight
+{
+    background-color: violet;
+    border-width: 2px;
+    border-color: blue;
+}
+input
+{
+    background-color: aqua;
+}
+input#username
+{
+    background-color: pink;
+}
+input[type="submit"]
+{
+    background-color: chocolate;
+}
+.error{
+   border-width: 2px;
+    border-color: red;
+}
+.success {
+    border-width: 2px;
+    border-color: green;
+}

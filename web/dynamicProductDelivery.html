@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function addControls(){
+            var productCount = parseInt(document.getElementById('productNumber').value);
+            var mainDiv = document.getElementById('div1');
+
+           var myDiv =  document.createElement('div');
+           myDiv.setAttribute('id','productDiv');
+
+           var spanLabel = document.createElement('span');
+           spanLabel.innerText = 'Product Address ';
+
+            var textBox = document.createElement('input');
+            textBox.setAttribute('type','text');
+
+            myDiv.appendChild(spanLabel);
+            myDiv.appendChild(textBox);
+
+           mainDiv.appendChild(myDiv);
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        Product Number : <input type="text" id="productNumber" onblur="addControls()">
+
+    </div>
+</body>
+</html>

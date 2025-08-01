@@ -1,0 +1,29 @@
+<html>
+<head>
+<script type="text/javascript">
+	 if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+            w = new Worker("pi.js");
+        }
+	}
+function display()
+{
+	w.onmessage = function(e) 
+	{
+		      document.getElementById("PiValue").innerHTML = e.data.PiValue;
+    };
+	//start the worker
+	w.postMessage({'cmd':'CalculatePi','value': document.getElementById("loop").value});
+  }
+
+</script>
+</head>
+<body>
+<label for="loop">Enter the number of cycles:</label>
+<input id="loop" type="number" value="100" />
+<input type="button" onclick="display()" value="Calculate Pi" />
+<br>
+<br>
+<div id="PiValue">PI value appears here</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link type="text/css" href="styles.css" rel="stylesheet">
+
+        <script>
+            function changeImage(img){
+                document.images[0].src =img
+            }
+        </script>
+</head>
+<body>
+    <h2> Hover mouse over image to change</h2>
+    <img src="1.jpg" height="300" width="300" 
+        onmouseover="changeImage('2.jpg')" 
+        onmouseout="changeImage('1.jpg')">
+</body>
+</html>

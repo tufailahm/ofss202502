@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" href="styles.css" rel="stylesheet">
+    <script>
+        function validateRegistrationForm(){
+          errUsername =  document.getElementById('errUsername');
+           var username = document.getElementById('username').value;
+           if(username.length ==0){
+            errUsername.innerHTML='<font color=red>Please enter your username';
+                return false;
+           }
+           else {
+            var selectedGender = document.querySelector('input[name="gender"]:checked');
+            if (!selectedGender) {
+                errGender.innerHTML = '<span style="color:red;">Please select atleast one gender</span>';
+                return false;
+            } 
+        }
+           return true;
+        }
+        function clearErrors(){
+            if(document.getElementById('username').value.length  > 0)
+                errUsername.innerHTML = ""
+        }
+    </script>
+</head>
+<body> <form action="success.html" method="get" onsubmit="return validateRegistrationForm()">
+        <h2 align="center">Registration Form</h2>
+        <table cellspacing="5" cellpadding="5" align="center">
+            <tr>
+                <td>User name : </td>
+                <td><input type="text" name="username" id="username" onblur="clearErrors()" ><span id="errUsername" ></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Password : </td>
+                <td><input type="password" name="password" id="password">
+                </td>
+            </tr>
+                     <tr>
+                <td>First Name : </td>
+                <td><input type="text" name="firstName"
+                     id="firstName" >
+                </td>
+            </tr>
+                        <tr>
+                <td>Last Name : </td>
+                <td><input type="text" name="lastName" id="lastName" >
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="gender" id="male" value="male">Male 
+                <input type="radio" name="gender" id="female" value="female">Female
+                    <input type="radio" name="gender" id="others" value="others">Others
+                    <span id="errGender" ></span>
+            </td>
+            </tr>
+             <tr>
+                <td>Communication</td>
+                <td><input type="checkbox" name="communication" id="email" value="email">Email 
+                <input type="checkbox" name="communication" id="sms" value="sms">SMS
+                    <input type="checkbox" name="communication" id="notification" value="notification">Notifications
+            </td>
+            </tr>
+            <tr>
+                <td>Nationality</td>
+                <td><select name="nationality" id="nationality" >
+                    <option value="IN">India</option>
+                    <option value="US" selected>USA</option>
+                    <option value="KSA">Saudi</option>
+                    <option value="MR">Morocco</option>
+                    <option value="CN">China</option>
+                </select></td>
+            </tr>
+            <tr><td>
+                <input type="submit" value="Register">
+            </td>
+        <td>
+                <input type="reset" value="Clear">
+            </td></tr>
+        </table>
+
+    </form>
+    <br/>
+<br/>
+<br/>
+<a href="index.html">Back</a>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .login-box button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    function goToSuccess() {
+      window.location = "success.html"
+    }
+
+    function storeData()
+    {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var remMe = document.getElementById('rme').checked;
+      if(remMe) {   
+        localStorage.setItem("username",username);
+        sessionStorage.setItem("password",password);
+      }
+      else {
+        localStorage.removeItem("username");
+        localStorage.removeItem("password");
+      }
+    }
+
+    function getAndLoadData(){
+        var username = localStorage.getItem("username");
+        var password = sessionStorage.getItem("password");
+
+        document.getElementById("username").value = username;
+        document.getElementById("password").value = password;
+    }
+  </script>
+</head>
+
+<body onLoad="getAndLoadData()">
+  <div class="login-box">
+    <h2>Login</h2>
+    <form action="success.html" method="get" onsubmit="storeData()">
+      <input type="text" name="username" id="username" placeholder="Username" required>
+      <input type="password" name="password"  id="password" placeholder="Password" required>
+      <font face="Verdana">
+        Remember Me : <input type="checkbox" value="rme" id="rme">
+        <button type="submit">Login</button>
+      </font>
+      <hr />
+      <button type="button" onclick="goToSuccess()">Success</button>
+      <button type="submit" formaction="register.html">New User ? Register</button>
+    </form>
+  </div>
+</body>
+</html>

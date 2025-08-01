@@ -11,6 +11,8 @@ public class ProductDAOImpl implements ProductDAO {
 
     Connection connection = OracleDbConnection.getOracleConnection();
     private static final String GET_ALL_PRODUCT = "select * from products";
+    private static final String GET_MAX_PRODUCT_ID = "select max(productId) from products";
+
     private static final String INSERT_PRODUCT = "insert into products values ( ?, ? , ? , ?, ? )";
     private static final String UPDATE_PRODUCT = "update products set productName = ?, price = ?, quantity = ?,review = ? where productId = ?";
     private static final String DELETE_PRODUCT = "delete from products where productId = ?";
@@ -61,6 +63,21 @@ public class ProductDAOImpl implements ProductDAO {
             throw new RuntimeException(e);
         }
         return result==0;
+
+    }
+
+    //GET THE MAX PRODUCT ID
+    public int getMaxProductId() {
+        int result = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement(GET_MAX_PRODUCT_ID);
+            statement.setInt(1, productId);
+            result = statement.executeQuer();
+            return result.getInt(1);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -144,4 +161,6 @@ public class ProductDAOImpl implements ProductDAO {
     public List<Product> getProduct(int lowerPrice, int upperPrice) {
         return List.of();
     }
+
+
 }

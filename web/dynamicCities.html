@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Booking</title>
+</head>
+<body>
+
+<label for="fromCity">From:</label>
+<select id="fromCity" onchange="updateToCity()">
+    <option value="">Select City</option>
+    <option value="New York">New York</option>
+    <option value="Los Angeles">Los Angeles</option>
+    <option value="Chicago">Chicago</option>
+    <option value="Houston">Houston</option>
+    <option value="Phoenix">Phoenix</option>
+</select>
+
+<label for="toCity">To:</label>
+<select id="toCity">
+    <option value="">Select City</option>
+    <option value="New York">New York</option>
+    <option value="Los Angeles">Los Angeles</option>
+    <option value="Chicago">Chicago</option>
+    <option value="Houston">Houston</option>
+    <option value="Phoenix">Phoenix</option>
+</select>
+
+<script src="validateCity.js"></script>
+</body>
+</html>
+

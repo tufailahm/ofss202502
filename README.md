@@ -1218,3 +1218,493 @@ http://localhost:8080/v3/api-docs
 500		- internal server codes
 
 
+
+
+
+
+Ci/CD Session
+
+
+Create a Build
+
+
+http://localhost:8080
+
+
+Welcome OFSS, Good morning
+
+Continuous Integration and Continous Deployment
+
+
+Jenkins
+------------
+
+
+
+Code 	-->	Git (https://github.com/tufailahm/message-api)
+
+What we need
+
+Jenkins
+
+Git	- download and install git 
+Maven
+
+
+2)	Configure jenkins
+
+
+Git repo : 
+https://github.com/tufailahm/message-api
+https://github.com/tufailahm/message-api.git
+
+
+JDK 21
+
+
+
+
+admin
+root
+
+
+OFSSMaven
+OFSSJDK
+OFSSGit
+
+
+USe case : https://github.com/tufailahm/message-api.git
+
+
+Hands on :  Create jenkins job that should trigger at 11:40 every day
+
+
+
+Custom Pipeline
+--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Javascript
+
+
+
+
+
+file:///E:/Trainings/2025/4.OFSS/ofss202502/web/success.html?username=Navya&password=navya123&firstName=Navya&lastName=Pai&gender=on
+
+
+
+file:///E:/Trainings/2025/4.OFSS/ofss202502/web/success.html?username=Navya&password=Navya123&firstName=Navya&lastName=Pai&gender=female
+
+
+file:///E:/Trainings/2025/4.OFSS/ofss202502/web/success.html
+?username=tufailcool&	&lastName=Ahmed&gender=male
+
+
+file:///E:/Trainings/2025/4.OFSS/ofss202502/web/success.html?username=tufailcool&password=123&lastName=Ahmed&
+gender=male&
+communication=email&communication=sms&communication=notification
+
+
+
+Hands on : Create a login Form like Below :
+
+
+Please provide login details :
+
+Username : 	[]	
+Password :	[]
+Role	:	[] -- Drop down -- Admin, Guest and Others
+** Default option should be ---select role----
+
+<Login>	- submit button
+
+<Clear>	- clear button
+
+
+
+Date
+
+
+            function calculateTotalBill(day, month, year){
+                var paidDate = new Date();
+                paidDate.setFullYear(year, month, day);
+                var dueDate = new Date();
+                dueDate.setFullYear(year, month, 5);
+
+                var billAmount = prompt("Enter bill amount", "8000");
+                var defaultDays = 0;
+                if(paidDate > dueDate){
+                    alert("Pay fine!")
+                    defaultDays = (paidDate - dueDate)/(1000*60*60*24);
+                }
+                var totalAmount = parseInt(billAmount) + defaultDays*50;
+                alert("Total amount: "+totalAmount)
+            }
+
+
+
+
+
+
+
+Use case : We have a image in a web page, that needs to change on mouse over.
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link type="text/css" href="styles.css" rel="stylesheet">
+
+        <script>
+            function changeImage(img){
+                document.images[0].src =img
+            }
+        </script>
+</head>
+<body>
+    <h2> Hover mouse over image to change</h2>
+    <img src="1.jpg" height="300" width="300" 
+        onmouseover="changeImage('2.jpg')" 
+        onmouseout="changeImage('1.jpg')">
+</body>
+</html>
+
+
+Login Form Validation 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+this in javascript
+-------------------------------
+
+
+Cookies
+-------------------------------
+
+
+
+
+
+Custom objects in javascript
+------------------------------------------
+
+All JavaScript coders eventually reach a stage where they would like to create and use their own objects, apart from the pre-built ones, such as document or Math. 
+window
+
+Custom objects allow you to build up your own personal JavaScript "toolbox" that extends beyond what the pre-build objects have to offer. 
+
+
+How to create your own basic object
+Creating an object requires two steps:
+
+First, declare the object by using an object function
+
+Lastly, instantiate the newly created object by using the "new" keyword
+
+Lets take this one step at a time. We will now proceed to create an object called "userobject", which, at this stage, does nothing:
+
+
+Step 1: declare the object by using an object function
+
+function userobject(parameter){
+}
+
+----------------------
+<script type="text/javascript">
+function userobject(parameter){
+}
+//myobject is now an object of type userobject!
+var myobject=new userobject("hi")
+</script>
+
+
+
+
+Thus far, our object "userobject" cannot do anything With some properties, that should all change. 
+To add properties to a user defined object, directly embed the properties into the object function, with each property proceeded by the keyword "this" plus dot (.): 
+function userobject(parameter)
+{
+this.firstproperty=parameter
+this.secondproperty="This is the second property"
+}
+Now, to use these properties, simply access them like accessing any other property:
+<script>
+var myobject=new userobject("hi there.")
+//alerts "hi there."
+alert(myobject.firstproperty)
+//writes "This is the second property"
+document.write(myobject.secondproperty)
+</script>
+
+
+----------------
+
+
+Adding methods to a user defined object is a bit more complicated. 
+
+We need to first declare and define a function for each method, then associate this function with the object function. For the sake of simplicity, we will simply call functions defined for methods "method functions.
+
+The first step to adding methods is to implement the method functions. Method functions define what a method does:
+
+//first method function
+function computearea(){
+    var area=this.radius*this.radius*3.14
+    return area
+}
+
+
+function computearea(radius){
+        var area=radius*radius*3.14
+        return area
+    }
+function userObject(parameter){
+    this.firstProperty = parameter
+    this.secondProperty = "Welcome in my second property"
+    this.mymethod = computearea
+}
+
+var myObject = new userObject(“DemoUser")
+
+console.log(myObject.firstProperty)
+console.log(myObject.secondProperty)
+console.log(myObject.mymethod(5))
+
+
+------------------------------------------
+
+
+HTML5 - localStorage and sessionStorage
+
+-----------------------------------------------
+
+Web Workers in HTML5 allow you to run JavaScript in the background, on a separate thread from the main UI thread. This is useful for performing heavy computations or background tasks without freezing the user interface.
+
+Features :
+Runs in the background (separate thread)
+
+Doesn't block the main UI
+
+Communicates via messages (using postMessage and onmessage)
+
+Cannot access DOM directly
+
+Limited to same-origin policy
+
+🧠 Use Cases:
+Data processing
+
+Heavy calculations
+
+Fetching large data from API
+
+Image or video manipulation
+
+
+
+
+
+
+Use case : Create dynamic HTML controls
+
+Product Number : 	[	76 ] 
+
+Product Address 1:		[	]
+
+....
+
+Product Address 76:		[	]
+
+
+
+
+
+
+
+Communicating with a Remote Server -Ajax
+
+
+
+
+
+
+-----------------Junit
+
+When user logs in
+Then they should enter password
+public class Calculator
+{
+	public int sum(int num1,num2)
+	{
+		return num1+num1;
+	}
+}
+
+
+-------------------
+
+
+Junit 5	- jupiter
+
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>6.0.0-M2</version>
+    <scope>test</scope>
+</dependency>
+
+
+@Test
+@DisplayName
+@Order 
+@TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
+
+
+Stub methods
+
+@BeforeEach
+@AfterEach
+@AfterAll		- static
+@BeforeAll	- static
+
+
+Exceoption Testing
+
+@Test
+	void testconvertStringToNumber1() {
+		System.out.println("### Test testconvertStringToNumber called");
+		actual = calculator.convertStringToNumber("90");
+		assertEquals(90, actual);
+	}
+
+	@Test
+	@DisplayName("Testing convert to numbers \"Twenty\" ")
+	void testconvertStringToNumber2() {
+		expected = 20;
+		System.out.println("### Test testconvertStringToNumber called");
+		assertThrows(NumberFormatException.class, () -> {
+			int actual = calculator.convertStringToNumber("20");
+			assertEquals(expected, actual);
+		});
+	}
+
+
+-----------------------------------
+
+
+	@ParameterizedTest(name = "{index} - {0} and {1} should be {2}")
+	@DisplayName("Testing calculator add")
+	@CsvFileSource(resources = "data.csv", numLinesToSkip = 1)
+	public void testAdd(int num1,int num2,int expected)
+	{
+		Calculator calculator = new Calculator();
+		int actual=calculator.add(num1,num2);
+		assertEquals(expected, actual);
+	}
+
+
+
+----------------------------------------------------
+
+
+
+
+   <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M5</version> <!-- Use a recent version -->
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

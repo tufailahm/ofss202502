@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="startWorker()">Start Worker</button>
+  <p id="output"></p>
+
+  <script>
+    let worker;
+
+    function startWorker() {
+      if (typeof(Worker) !== "undefined") {
+        if (!worker) {
+          worker = new Worker("worker.js");
+        }
+
+        worker.onmessage = function(event) {
+          document.getElementById("output").innerText = "Result: " + event.data;
+        };
+
+        worker.postMessage(100); // Send data to worker
+                worker.postMessage(200); // Send data to worker
+
+      } else {
+        alert("Web Workers not supported in your browser.");
+      }
+    }
+  </script>
+</body>
+</html>

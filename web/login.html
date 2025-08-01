@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login Page</title>
+
+    <link type="text/css" href="styles.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <style>
+        h2 {
+            color: yellow;
+        }
+    </style>
+    <script>
+        function doWork(name) {
+            if (name == null)
+                alert("Hello Guest")
+            else
+                alert("Hello : " + name)
+        }
+        function checkDaysLeft() {
+            var today = new Date();	//30th July 2025
+            var lastdate = new Date();       //30th July 2025
+            lastdate.setFullYear(2025, 11, 31);//31st  Dec 2025
+            if (lastdate > today) {
+                var day = 1000 * 60 * 60 * 24;
+                x = (lastdate - today) / day;
+                alert("Number of days left " + x);
+            }
+            else {
+                alert("time up and you cannot apply for interview");
+            }
+        }
+        function calculateAge(date=1, month=0, year=2000){
+                var today = new Date();
+                var dob = new Date();
+                dob.setFullYear(year, month, date);
+                if(dob < today){
+                    var ageInMillisec = today - dob;
+                    var millisecToYears = 1000 * 60 * 60 * 24 * 365;
+                    var ageInYears = ageInMillisec / millisecToYears;
+                    alert("Age in years: "+ Math.round(ageInYears));
+                }
+                else{
+                    alert("Not born yet");
+                }
+            }
+
+  
+    </script>
+</head>
+
+<body onload="checkCookie()">
+    <input type="button" value="Apply For Job" onclick="checkDaysLeft()">
+    <input type="button" value="Age Calculator" onclick="calculateAge(16,4,2030)">
+
+    <form action="success.html" method="get" onsubmit="return validate()">
+        <h2 align="center">Login Form - 1</h2>
+        <h2 align="center" style="color: black;" class="highlight">Login Form - 2 </h2>
+
+        <table cellspacing="5" cellpadding="5" align="center">
+            <tr>
+                <td>User name:</td>
+                <td><input type="text" name="username" id="username" class="success"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td><select name="Role" id="role" onchange="validate()">
+                        <!--    <option value="" disabled selected hidden>--select role--</option> undefined value in javascript-->
+                        <option value="">--select role--</option> <!-- undefined value in javascript-->
+
+                        <option value="A">Admin</option>
+                        <option value="G">User</option>
+                        <option value="O">Others</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Login" >
+                </td>
+                <td>
+                    <input type="reset" value="clear">
+                </td>
+            </tr>
+        </table>
+        <input type="button" value="DoWork1" onclick="doWork()">
+        <input type="button" value="DoWork2" onclick="doWork('Hashmita')">
+        <input type="button" value="DoWork3" onclick="doWork('Hashmita','OFSS')">
+
+    </form>
+</body>
+
+<br />
+<br />
+<br />
+<a href="index.html">Back</a>
+
+</html>

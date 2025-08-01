@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function Product(productId) {
+        this.productId = productId;
+        this.productName = "Aroma";
+        this.changeProductName = changeProductName; 
+    }
+
+    function changeProductName(productName) {
+        this.productName = productName;
+    }
+
+    product1 = new Product(100);
+    product1.changeProductName('Mouse');
+    product2 = new Product(200);
+
+    console.log('Product 1 Id :' + product1.productId);
+    console.log('Product 2 Name :' + product1.productName);
+
+
+    console.log('Product 2 Id :' + product2.productId);
+    console.log('Product 3 Name :' + product2.productName);
+</script>
+
+<body>
+
+</body>
+
+</html>
