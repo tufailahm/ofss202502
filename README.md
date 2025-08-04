@@ -1708,3 +1708,292 @@ Exceoption Testing
 
 
 
+	Postman Overview
+	Sending API Requests 
+	Understanding API responses 
+	Manage APIs with Collections 
+	Variables and Environments 
+
+Writing Test Scripts 
+Collection Runner 
+Using Postman to Create a Reusable API Framework
+Testing Workflow with Twitter API
+Authorization 
+Testing Automation
+
+
+
+https://fakerestapi.azurewebsites.net/api/v1/Authors
+
+
+
+
+http://localhost:8080/products/100
+
+{
+
+}
+
+http://localhost:8080/products/100		- ENDPOINT
+					- parameter
+					Path Parameter	
+						
+
+http://localhost:8080/products?sort=price&order=desc
+					Query Parameters
+
+
+
+Another Save Product 
+Expectation : 409
+
+
+
+   const postRequestOptions = {
+        url: 'https://api.example.com/data', // Replace with your API endpoint
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json', // Or 'application/x-www-form-urlencoded', etc.
+            'Authorization': 'Bearer YOUR_TOKEN' // If authentication is required
+        },
+        body: {
+            mode: 'raw', // Or 'urlencoded', 'formdata', etc.
+            raw: JSON.stringify({ // Stringify JSON body
+                "key1": "value1",
+                "key2": "value2"
+            })
+            // For urlencoded:
+            // urlencoded: [
+            //     { key: 'param1', value: 'data1' },
+            //     { key: 'param2', value: 'data2' }
+            // ]
+        }
+    };
+
+
+
+   const postRequestOptions = {
+        url: 'localhost:9090/products', // Replace with your API endpoint
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json', // Or 'application/x-www-form-urlencoded', etc.
+           
+        },
+        body: {
+            mode: 'raw', // Or 'urlencoded', 'formdata', etc.
+            raw: JSON.stringify({ // Stringify JSON body
+                "productId":199,
+	   "productName","A",
+            })
+            // For urlencoded:
+            // urlencoded: [
+            //     { key: 'param1', value: 'data1' },
+            //     { key: 'param2', value: 'data2' }
+            // ]
+        }
+    };
+
+
+
+---------
+
+
+// Generate a dynamic product ID before sending the request
+const dynamicProductId = Math.floor(Math.random() * 10000); // Random product ID between 0 and 9999
+pm.environment.set("productId", dynamicProductId); // Store the dynamic product ID in an environment variable
+
+// Log the generated product ID for debugging
+console.log("Generated Dynamic Product ID:", dynamicProductId);
+
+//Here we save this productId in DB
+pm.request.headers.upsert({
+    key: 'Content-Type',
+    value: 'application/json'
+});
+
+// Save values to collection variables
+pm.collectionVariables.set("productId",dynamicProductId);
+pm.collectionVariables.set("productName", "Projector");
+pm.collectionVariables.set("price",100);
+pm.collectionVariables.set("quantity", 1);
+pm.collectionVariables.set("review", "Excellent");
+
+pm.request.body();
+
+
+
+ {
+        "productId": {{productId}},
+        "productName": "HPLaptop",
+        "price": 1,
+        "quantity": 1,
+        "review": "Excellent"
+    }
+
+
+
+
+----------
+
+
+console.log("Pre script called")
+pm.request.headers.upsert({
+    key: 'Content-Type',
+    value: 'application/json'
+});
+
+   const postRequestOptions = {
+        url: 'http://localhost:9090/products', // Replace with your API endpoint
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json', // Or 'application/x-www-form-urlencoded', etc.
+    
+        },
+        body: {
+            mode: 'json', // Or 'urlencoded', 'formdata', etc.
+            raw: JSON.stringify({ // Stringify JSON body
+                "productId":1111,
+	            "productName":"AAAAA"
+            })
+            // For urlencoded:
+            // urlencoded: [
+            //     { key: 'param1', value: 'data1' },
+            //     { key: 'param2', value: 'data2' }
+            // ]
+        }
+    };
+ pm.sendRequest(postRequestOptions, (err, res) => {
+        if (err) {
+            console.error("##### ERRRR:"+err);
+        } else {
+            console.log(res.json()); // Log the response body
+            // You can also perform assertions or set environment variables here
+            // pm.environment.set("response_data", res.json());
+        }
+    });
+
+
+
+
+--------------------
+Use case: Check for conflict status code ( 409)
+
+
+Make a normal post request
+
+{{productUrl}}	- POST
+
+BODY :
+ {
+        "productId": {{productId}},
+        "productName": "HPLaptop",
+        "price": 1,
+        "quantity": 1,
+        "review": "Excellent"
+    }
+
+
+Script -- Pre 
+
+// Generate a dynamic product ID before sending the request
+const dynamicProductId = Math.floor(Math.random() * 10000); // Random product ID between 0 and 9999
+pm.environment.set("productId", dynamicProductId); // Store the dynamic product ID in an environment variable
+
+// Log the generated product ID for debugging
+console.log("Generated Dynamic Product ID:", dynamicProductId);
+
+//I am inserting one record with the same product id - via script
+
+// Generate a dynamic product ID before sending the request
+const dynamicProductId = Math.floor(Math.random() * 10000); // Random product ID between 0 and 9999
+pm.environment.set("productId", dynamicProductId); // Store the dynamic product ID in an environment variable
+
+// Log the generated product ID for debugging
+console.log("Generated Dynamic Product ID:", dynamicProductId);
+
+
+
+console.log("Pre script called")
+pm.request.headers.upsert({
+    key: 'Content-Type',
+    value: 'application/json'
+});
+
+   const postRequestOptions = {
+        url: 'http://localhost:9090/products', // Replace with your API endpoint
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json', // Or 'application/x-www-form-urlencoded', etc.
+    
+        },
+        body: {
+            mode: 'json', // Or 'urlencoded', 'formdata', etc.
+            raw: JSON.stringify({ // Stringify JSON body
+                "productId":dynamicProductId,
+	            "productName":"IDCARD",
+                "price":90,
+                "quantity":99,
+                "review":"Excellent"
+            })
+            // For urlencoded:
+            // urlencoded: [
+            //     { key: 'param1', value: 'data1' },
+            //     { key: 'param2', value: 'data2' }
+            // ]
+        }
+    };
+ pm.sendRequest(postRequestOptions, (err, res) => {
+        if (err) {
+            console.error("##### ERRRR:"+err);
+        } else {
+            console.log(res.json()); // Log the response body
+            // You can also perform assertions or set environment variables here
+            // pm.environment.set("response_data", res.json());
+        }
+    });
+
+
+
+----------------------------------POST
+
+
+
+pm.test("status code is 409", function(){
+    pm.response.to.have.status(409);
+})
+
+
+=====================================
+Postman - Exercise
+
+
+
+
+
+Hands On :
+
+1) Create a rest endpoint to update visitor information like below :
+
+http://localhost:9090/visitor/:visitorId		- PUT 
+
+a) It should take visitor object to update
+b) The visitor id passed in the url should be used to update the record and not the id passed as a JSON object
+c) If the visitor id does not exists , send 204 status code
+d) If the visitor id exists, then it should update visitorName,purpose and mobileNumber of that particular id and send status code of 200 alongwith all the all the visitors. (You can verify whether it got updated or not )
+
+
+2) Test the above REST API in postman and update one record.
+
+3) Verify the results
+
+
+Hands on - Postman
+
+--------------------------------------
+
+
+
+
+
+
+

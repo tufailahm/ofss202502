@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("product")
+@RequestMapping("products")
  public class ProductController {
 
     ProductDAO productDAO = new ProductDAOImpl();
@@ -18,6 +18,7 @@ import java.util.List;
    @GetMapping
     public List<Product> getProduct(){     //JSON
         List<Product> products = productDAO.getProduct();
+
         return products;
     }
 

@@ -3,6 +3,7 @@ package dao;
 
 import model.Product;
 import util.OracleDbConnection;
+import util.PostgresDbConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 public class ProductDAOImpl implements ProductDAO {
 
     Connection connection = OracleDbConnection.getOracleConnection();
+    //Connection connection = PostgresDbConnection.getPostgresConnection();
     private static final String GET_ALL_PRODUCT = "select * from products";
     private static final String INSERT_PRODUCT = "insert into products values ( ?, ? , ? , ?, ? )";
     private static final String UPDATE_PRODUCT = "update products set productName = ?, price = ?, quantity = ?,review = ? where productId = ?";
@@ -48,7 +50,7 @@ public class ProductDAOImpl implements ProductDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return result != 0;
+        return result ==0 ? false:true;
     }
 
     public boolean deleteProduct(int productId) {
