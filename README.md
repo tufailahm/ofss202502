@@ -1991,9 +1991,330 @@ Hands on - Postman
 
 --------------------------------------
 
+https://demo44-6929.postman.co/workspace/OFSS202502~9e6d35bd-1b9d-45e6-9b04-4d0c4501e309/collection/37057486-e5640418-fef5-41dc-ac6e-e27d248a2333?action=share&creator=37057486&active-environment=37057486-4cef4599-687d-46c3-bad8-e07482669b9e
+
+
+Secured Resource
+
+localhost:8080/pms/userDetails
+
+
+code : lR6cgT
+
+
+8bKbg0
+
+
+--------------
+
+What is Selenium ?
+Selenium is an open-source tool that automates web browsers.
+
+It provides a single interface that lets you write test scripts in programming languages like Ruby, Java, NodeJS, PHP, Perl, Python, and C#, among others.
+
+A browser-driver then executes these scripts on a browser-instance on your device (more on this in a moment).
+
+
+
+Use case : We have to test saucedemo to check valid credentials login.
+
+Step 1: Driver for web browser - chrome
+
+Step 2: Open the website
+
+Step 3: locate the textbox
+Step 4: type username
+Step 5: locate the passfield
+Step 7: type password
+Step 7: locate the submit
+Step 8 : click
+Step 9 : assertiuons
+
+
+
+
+//*[@id="shopping_cart_container"]/a
+
+
+Hands :
+
+visit amazon
+type diamond studded name plate
+name plate - Mohammad Tufail Ahmed
+
+
+Cucumber Testing
+--------------------------
+
+Gherkin Language
+
+
+Feature : User login validation
+
+Scenario : test user with valid credentials
+When user visits our website
+Then the user navigates to homepage
+And enters username and pasword
+Then click on the login button
+Then they should land on dashboard
+
+Feature: Login functionality
+
+  Scenario: Valid user login
+    Given User is on the login page
+    When User enters valid credentials
+    Then User should be redirected to the dashboard
 
 
 
 
 
+
+Step 1:
+
+<dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.14.0</version>
+            <scope>test</scope>
+        </dependency>
+
+Step 2: Create a runner class to link feature file and glue code
+
+package runners;
+
+import org.junit.runner.RunWith;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = "src/test/resources",
+    glue = "com.training",
+    plugin = {"pretty"},
+    monochrome = true
+)
+public class TestRunner {
+}
+
+Step 3: create login.feature file inside src/test/resources folder
+
+** alignment should be proper.
+Feature: Login functionality
+
+  Scenario: Valid user login
+    Given Customer is on the login page
+    When User enters valid credentials
+    Then User should be redirected to the dashboard
+
+
+Step 4: Create glue code ..
+Ceate LoginTest.java
+package com.training.com.training;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class LoginTest {
+    @Given("Customer is on the login page")
+    public void customer_is_on_the_login_page() {
+        System.out.println("Customer is on the login page");
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+    @When("User enters valid credentials")
+    public void user_enters_valid_credentials() {
+        System.out.println("User enters valid credentials");
+        // Write code here that turns the phrase above into concrete actions
+    }
+    @Then("User should be redirected to the dashboard")
+    public void user_should_be_redirected_to_the_dashboard() {
+        System.out.println("User should be redirected to the dashboard");
+        // Write code here that turns the phrase above into concrete actions
+    }
+}
+
+
+To do - error
+
+package com.training.com.training;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
+public class LoginTest {
+    WebDriver driver;
+    String browserName="chrome";
+    public LoginTest() {
+        System.out.println("1. Driver loaded ");
+     //   driver = new ChromeDriver();
+    }
+
+    @BeforeEach()
+    public void beforeEach() {
+        System.out.println("2. ###Before each called");
+        driver = new ChromeDriver();
+
+    }
+
+    @AfterEach()
+    public void afterEach() {
+        System.out.println("LAST. Driver removed ");
+        driver = null;
+    }
+ //   @Given("Customer is on the login page")
+    @Test
+    @Order(1)
+    @DisplayName(("1. open sauce demo"))
+    public void customer_is_on_the_login_page() {
+    //    driver.get("https://www.saucedemo.com/");
+        System.out.println("3. Customer is on the login page");
+    }
+   // @When("User enters valid credentials")
+    @Test
+    @Order(2)
+    @DisplayName(("2. enter valid credentials"))
+    public void user_enters_valid_credentials() {
+        System.out.println("4. User enters valid credentials");
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+    }
+    @Test
+    @Order(3)
+    @DisplayName(("3. open dashboard"))
+  //  @Then("User should be redirected to the dashboard")
+    public void user_should_be_redirected_to_the_dashboard() {
+        System.out.println("User should be redirected to the dashboard");
+        String actual = driver.getCurrentUrl();
+        String expected = "https://www.saucedemo.com/inventory.html";
+        assertEquals(expected, actual);
+        driver.quit();
+    }
+}
+
+
+-------------
+
+
+
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#user\-name"}
+
+
+
+
+
+Scenario Outline
+
+
+
+
+
+
+----------------
+
+Spring
+	- framework
+	- IOC
+	- DI
+
+
+
+@Component
+@Service
+@Controller
+@Repository
+
+
+
+Hands on :
+http://localhost:9090/getRandomNumber
+
+
+RandomNumberGenerator randomObject;
+
+
+10 minutes
+
+@Qualifier
+@Primary
+@Component
+@AutoWired
+@AutoWired(required=false)
+
+
+
+@SpringBootApplication
+
+
+🔍 What does @SpringBootApplication do?
+
+@SpringBootConfiguration         // Like @Configuration (Java-based config)
+@EnableAutoConfiguration         // Enables auto-configuration
+@ComponentScan                  
+
+
+
+Spring Data JPA
+-------------------------
+
+
+localhost:9090/visitor
+
+
+JPA
+--------
+
+
+Model class
+	
+
+
+Repositor classes
+
+CrudRepository
+JpaRepository
+
+
+Hands on :
+
+					HTTP METHODS
+
+http://localhost:9090/visitor					GET		- GET ALL VISITORS
+http://localhost:9090/visitor/{visitorId}		GET		- GET A SINGLE VISITOR
+http://localhost:9090/visitor				POST		- CREATE A VISITOR 
+http://localhost:9090/visitor				PUT		- UPDATE A VISITOR 
+http://localhost:9090/visitor/{visitorId}/{newMobileNumber} PUT	- 	UPDATE A VISITOR 
+http://localhost:9090/visitor/{visitorId}			DELETE		- DELETE A SINGLE VISITOR
+http://localhost:9090/visitor/mobilenumber/{mobileNumber}		DELETE		- DELETE A SINGLE VISITOR
+
+
+http://localhost:9090/visitor/search/{vistorName}	GET		- GET VISITOR(S) NAME
+http://localhost:9090/visitor/search/purpose/{purpose}	GET		- GET VISITOR(S) NAME
+http://localhost:9090/visitor/mobilenumber/{mobileNumber}	GET		- GET VISITOR BY MOBILE NUMBER
+
+http://localhost:9090/visitor/search/Neha	- POST			- METHOD NOT ALLOWED(405)
+
+
+
+JPA custom methods
+
+/ Derived delete query
+    void deleteByMobileNumber(String mobileNumber);
+
+    // OR: Use @Modifying + @Query
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Visitor v WHERE v.mobileNumber = :mobileNumber")
+    void deleteVisitorByMobileNumber(@Param("mobileNumber") String mobileNumber);
 

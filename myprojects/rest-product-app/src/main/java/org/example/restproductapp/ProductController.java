@@ -13,8 +13,8 @@ import java.util.List;
 @RequestMapping("products")
  public class ProductController {
 
-    ProductDAO productDAO = new ProductDAOImpl();
-
+    ProductDAO productDAO ; //Null pointer exception
+  //  ProductDAO productDAO
    @GetMapping
     public List<Product> getProduct(){     //JSON
         List<Product> products = productDAO.getProduct();

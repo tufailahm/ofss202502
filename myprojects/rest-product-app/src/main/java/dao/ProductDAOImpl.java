@@ -11,8 +11,11 @@ import java.util.List;
 
 public class ProductDAOImpl implements ProductDAO {
 
-    Connection connection = OracleDbConnection.getOracleConnection();
-    //Connection connection = PostgresDbConnection.getPostgresConnection();
+//    Connection connection = OracleDbConnection.getOracleConnection();
+ //   Connection connection = PostgresDbConnection.getPostgresConnection();
+
+    Connection connection;
+
     private static final String GET_ALL_PRODUCT = "select * from products";
     private static final String INSERT_PRODUCT = "insert into products values ( ?, ? , ? , ?, ? )";
     private static final String UPDATE_PRODUCT = "update products set productName = ?, price = ?, quantity = ?,review = ? where productId = ?";
