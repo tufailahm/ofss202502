@@ -1,0 +1,22 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,beans,env
+spring:
+  datasource:
+    username: system
+    url: jdbc:oracle:thin:@10.120.93.4:1521:free
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    password: root
+  jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: update
+  application:
+    name: loan-management-system
+server:
+  port: '9090'

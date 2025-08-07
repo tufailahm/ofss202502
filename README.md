@@ -2318,3 +2318,63 @@ JPA custom methods
     @Query("DELETE FROM Visitor v WHERE v.mobileNumber = :mobileNumber")
     void deleteVisitorByMobileNumber(@Param("mobileNumber") String mobileNumber);
 
+
+
+
+
+
+
+
+
+
+http://localhost:9090/visitor/search/{vistorName}	GET		- GET VISITOR(S) NAME
+
+
+
+
+
+
+
+Micro services
+==============
+
+http://localhost:9090/visitors			
+
+
+http://localhost:7070/applyLoan		
+
+	
+Communication between services	- RestTemplate
+
+
+
+Spring Cloud	
+	
+
+--------------Register	EurekaServer	- Register your services	- 8761
+
+
+
+
+Circuit Breaker
+----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
