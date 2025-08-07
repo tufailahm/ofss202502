@@ -2347,17 +2347,21 @@ http://localhost:7070/applyLoan
 Communication between services	- RestTemplate
 
 
-
 Spring Cloud	
 	
-
 --------------Register	EurekaServer	- Register your services	- 8761
-
-
 
 
 Circuit Breaker
 ----------------------
+
+http://localhost:6050/applyLoan
+
+
+--------------------
+
+		Zuul
+
 
 
 

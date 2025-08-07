@@ -21,7 +21,7 @@ public class LoanController {
     VisitorService visitorService;
 
     @GetMapping("{visitorId}")      //localhost:7070/applyLoan/102
-    @CircuitBreaker(name = "visitorService", fallbackMethod = "ofssFallbackmethod")
+    @CircuitBreaker(name = "visitorServiceCircuitBreaker", fallbackMethod = "ofssFallbackmethod")
     public ResponseEntity<String> applyLoan(@PathVariable String visitorId){
 
 
@@ -49,7 +49,7 @@ public class LoanController {
     }
 
 
-    public ResponseEntity<String> ofssFallbackmethod(String id) {
+    public ResponseEntity<String> ofssFallbackmethod(String id,Throwable t) {
         return new ResponseEntity<String>("Visitor service is currently unavailable. Please try again later.",HttpStatusCode.valueOf(200));
     }
 }

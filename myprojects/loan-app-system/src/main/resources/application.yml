@@ -1,16 +1,3 @@
-resilience4j.circuitbreaker:
-  configs:
-    default:
-      failureRateThreshold: 1
-      slidingWindowType: COUNT_BASED
-      slidingWindowSize: 1
-      minimumNumberOfCalls: 2
-      waitDurationInOpenState: 1s
-      permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
-  instances:
-    visitorServiceCircuitBreaker:
-      baseConfig: default
 spring:
  application:
    name: loan-app-system

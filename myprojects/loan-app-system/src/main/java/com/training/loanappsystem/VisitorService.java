@@ -21,11 +21,12 @@ import org.springframework.web.client.RestTemplate;
 
             try {
                 String value =  restTemplate.getForObject(url, String.class);
+                return "Success";
               //  Visitor visitor = restTemplate.getForObject(url, Visitor.class);
-            } catch (RestClientException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            return "Success";
+
         }
 
         public String fallbackForMyMethod() throws InterruptedException{
