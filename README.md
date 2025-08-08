@@ -2360,8 +2360,51 @@ http://localhost:6050/applyLoan
 
 --------------------
 
-		Zuul
+		Zuul		: 6060/visitors
+		Zuul		: 6060/applyLoan
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+com.training
+
+	@SpringBootApplication(scanPackages="com")
+	main
+		
+
+
+
+
+
+com.hello
+	@Component
+	Greeting
+
+
+
+
+--------------------------
+Spring Security
+----------------------------
+Authentication
+Authorization
+
+
+Spring-starter-security
 
 
 

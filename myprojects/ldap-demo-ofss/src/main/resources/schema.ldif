@@ -1,0 +1,30 @@
+dn: dc=springframework,dc=org
+objectclass: top
+objectclass: domain
+dc: springframework
+
+dn: ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn: uid=tufail,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Tufail Ahmed
+sn: Ahmed
+uid: tufail
+userPassword: 123456
+
+dn: cn=developers,ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: developers
+uniqueMember: uid=tufail,ou=people,dc=springframework,dc=org
