@@ -1,0 +1,38 @@
+<h2>Add Visitors</h2>
+<oj-validation-group id="visitorForm" on-valid-changed="[[groupValidChanged]]">
+
+
+<oj-label for="visitorid">Visitor Id:</oj-label>
+<oj-input-text id="visitorId" value="{{visitorId}}" required></oj-input-text>
+<br/><br/>
+
+<oj-label for="visitorname">Visitor Name:</oj-label>
+<oj-input-text id="visitorName" value="{{visitorName}}"
+validators="[[inputVisitorNamevalidators]]" ></oj-input-text>
+<br/><br/>
+
+<oj-label for="purpose">Purpose:</oj-label>
+<oj-input-text id="purpose" value="{{purpose}}" required></oj-input-text>
+<br/><br/>
+
+<oj-label for="mobileNumber">Mobile Number:</oj-label>
+<oj-input-text id="mobileNumber" value="{{mobileNumber}}" required validators="[[ [mobileValidator] ]]"></oj-input-text>
+<br/><br/>
+
+<oj-button on-oj-action="{{saveVisitor}}" disabled="[[isFormInvalid]]">
+<oj-bind-text  value={{isFormInvalid}}></oj-bind-text>
+</oj-button>
+<oj-button on-oj-action="{{updateVisitor}}">Update</oj-button>
+<oj-button on-oj-action="{{deleteVisitor}}">Delete</oj-button>
+<oj-button on-oj-action="{{searchVisitor}}">Search</oj-button>
+
+</oj-validation-group>
+
+
+<p><b>Live Preview:</b></p>
+ID: <oj-bind-text value="[[visitorId]]"></oj-bind-text><br/>
+Name: <oj-bind-text value="[[visitorName]]"></oj-bind-text><br/>
+Purpose: <oj-bind-text value="[[purpose]]"></oj-bind-text><br/>
+Mobile: <oj-bind-text value="[[mobileNumber]]"></oj-bind-text>
+
+

@@ -1,0 +1,18 @@
+spring:
+ datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    driverClassName: org.postgresql.Driver
+    password: root
+ jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+server:
+        port: 7070
+application:
+          name: loan-app-system

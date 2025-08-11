@@ -1,4 +1,6 @@
-"# ofss202502" 
+Because I made it esay doesnt mean it's not hard.
+
+ "# ofss202502" 
 https://codeshare.io/tufail
 
 Case Study
@@ -2405,6 +2407,108 @@ Authorization
 
 
 Spring-starter-security
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OJET
+------------
+
+MVVM
+
+
+Page
+
+Model		- POJO
+	
+
+View		- HTML
+
+
+VM		- JS
+
+
+
+Request	-> 	 <--Response
+OJET		    SpringBoot
+
+http://localhost:9090/visitors/90
+
+node 
+
+
+
+
+
+
+
+Hands On
+
+
+Create Radio button to select Gender :
+Male
+Female
+
+
+Create Checkbox to select  
+Visit Purpose :
+Personal
+Official
+Meeting
+
+
+20 minutes
+
+
+
+
+
+'ojs/ojformlayout'
+
+
+<oj-form-layout id="formLayoutOptions"
+  max-columns="5"
+ direction="column"
+ class="oj-formlayout-full-width"
+ user-assistance-density="compact"
+> 
+
+
+
+
+
+
+
+Hands on :
+
+1) Create a web page to capture visitors information :
+
+Visitor Id :	[		]
+Visitor Name : 	[		]
+Purpose :		[		]	
+Mobile Number :	[		]
+
+
+[ Save ]  		[ Update ]
+[ Delete ]		[ Search By Visitor Id ]
+
+
 
 
 

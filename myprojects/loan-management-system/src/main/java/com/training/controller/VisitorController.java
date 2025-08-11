@@ -5,13 +5,17 @@ import com.training.model.Visitor;
 import com.training.service.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/visitors")
+@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200", "http://localhost:8000" })
 public class VisitorController {
 
     @Autowired
@@ -40,13 +44,27 @@ public class VisitorController {
     public Visitor getVisitorByPhone(@PathVariable String mobileNumber) {
         return visitorService.findByVisitorPhone(mobileNumber);
     }
-
+/*
     // POST - create a visitor
     @PostMapping
-    public String createVisitor(@RequestBody Visitor visitor) {
+    public ResponseEntity<String> createVisitor(@RequestBody Visitor visitor) {
         boolean added = visitorService.addVisitor(visitor);
-        return added ? "Visitor added successfully." : "Visitor already exists.";
+        return new ResponseEntity<String>("Visitor Added Successfully", HttpStatusCode.valueOf(201));
     }
+
+    @PostMapping(produces = "application/json")
+    public ResponseEntity<String> createVisitor(@RequestBody Visitor visitor) {
+        visitorService.addVisitor(visitor);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("{\"message\":\"Visitor Added Successfully\"}");
+    }
+*/
+    @PostMapping(produces = "application/json")
+    public ResponseEntity<Visitor> createVisitor(@RequestBody Visitor visitor) {
+       visitorService.addVisitor(visitor);
+        return ResponseEntity.status(HttpStatus.CREATED).body(visitor);
+    }
+
 
     // PUT - update a visitor
     @PutMapping
@@ -66,12 +84,26 @@ public class VisitorController {
         }
         return "Visitor not found.";
     }
-
+/*
     // DELETE - by ID
     @DeleteMapping("/{visitorId}")
     public String deleteVisitorById(@PathVariable int visitorId) {
         boolean deleted = visitorService.deleteVisitor(visitorId);
         return deleted ? "Visitor deleted successfully." : "Visitor not found.";
+    }
+*/
+
+    @DeleteMapping("/{visitorId}")
+    public ResponseEntity<Map<String, String>> deleteVisitorById(@PathVariable int visitorId) {
+        boolean deleted = visitorService.deleteVisitor(visitorId);
+        Map<String, String> response = new HashMap<>();
+        if (deleted) {
+            response.put("message", "Visitor deleted successfully.");
+            return ResponseEntity.ok(response); // HTTP 200
+        } else {
+            response.put("message", "Visitor not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
     }
 
     // DELETE - by mobile number

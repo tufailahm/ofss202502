@@ -1,0 +1,34 @@
+<h2>Hello Customer, Please fill the details</h2>
+
+<oj-form-layout id="formLayoutOptions" max-columns="2" direction="column" class="oj-formlayout-full-width"
+      user-assistance-density="compact">
+
+
+      <oj-label for="username">Username</oj-label>
+      <oj-input-text id="username" value="{{username}}"></oj-input-text>
+      <oj-input-text id="username" value="[[username]]"></oj-input-text>
+
+
+
+      <br />
+
+      <oj-label for="customerType">Customer Type</oj-label>
+      <oj-select-single id="customerType" placeholder="select" data="[[customerTypeDataProvider]]"
+            value="{{selectVal}}">
+
+      </oj-select-single>
+
+
+      Welcome ,<oj-bind-text value="{{username}}"></oj-bind-text><br />
+
+      Welcome ,<oj-bind-text value="[[username]]"></oj-bind-text><br />
+
+      Welcome ,<oj-bind-text value="{{username}}"></oj-bind-text><br />
+
+      <oj-button on-oj-action="{{saveVisitor1}}">Save1</oj-button>
+
+      <oj-button on-oj-action="{{saveVisitor2}}">Save2</oj-button>
+
+
+
+</oj-form-layout>

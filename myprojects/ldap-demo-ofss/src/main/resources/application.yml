@@ -5,7 +5,7 @@ spring:
   ldap:
     embedded:
       base-dn: dc=springframework,dc=org
-      ldif: classpath:test-server.ldif
+      ldif: classpath:schema.ldif
       port: 8389
 
   security:
