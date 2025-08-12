@@ -40,6 +40,10 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojknocko
         { path: 'customers', detail: { label: 'Customers', iconClass: 'oj-ux-ico-contact-group' } },
         { path: 'listVisitors', detail: { label: 'List Visitors', iconClass: 'oj-ux-ico-contact-group' } },
         { path: 'addVisitors', detail: { label: 'Add Visitors', iconClass: 'oj-ux-ico-contact-group' } },
+        
+        { path: 'listVisitorsFresh', detail: { label: 'List Visitors Fresh', iconClass: 'oj-ux-ico-contact-group' } },
+        { path: 'addVisitorsFresh', detail: { label: 'Add Visitors Fresh', iconClass: 'oj-ux-ico-contact-group' } },
+
         { path: 'about', detail: { label: 'About', iconClass: 'oj-ux-ico-information-s' } }
       ];
 

@@ -1,0 +1,46 @@
+<br />
+<br />
+
+<br/>
+<h2>Visitors display - part 2</h2>
+<oj-table id="table" data="[[dataProvider]]" columns='[
+        {"headerText": "Visitor Id", "field": "visitorId"},
+        {"headerText": "Visitor Name", "field": "visitorName"},
+        {"headerText": "Mobile Number", "field": "mobileNumber"},
+        {"headerText": "Purpose", "field": "purpose"},
+        {"headerText": "Actions", "template": "actionTemplate"}
+    ]'>
+
+    <!-- Template for Actions column -->
+   <template slot="actionTemplate" data-oj-as="cell">
+    <oj-button chroming="danger" display="icons" 
+        on-oj-action="[[() => deleteVisitor(cell.item.data)]]">
+        Delete
+    </oj-button>
+</template>
+<br/>
+
+
+
+<br/>
+<br/>
+<oj-button on-oj-action="[[function() { document.getElementById('addDialog').open(); }]]">
+  Add Visitor
+</oj-button>
+
+<!-- Add Dialog -->
+<oj-dialog id="addDialog" dialog-title="Add Visitor">
+  <div slot="body">
+    <oj-form-layout>
+      <oj-input-text value="{{visitorId}}" label-hint="Visitor Id"></oj-input-text>
+      <oj-input-text value="{{visitorName}}" label-hint="Visitor Name"></oj-input-text>
+      <oj-input-text value="{{purpose}}" label-hint="Purpose"></oj-input-text>
+      <oj-input-text value="{{mobileNumber}}" label-hint="Mobile Number"></oj-input-text>
+    </oj-form-layout>
+  </div>
+  <div slot="footer">
+    <oj-button on-oj-action="[[addVisitor]]">Save</oj-button>
+    <oj-button on-oj-action="[[function(){ document.getElementById('addDialog').close(); }]]">Cancel</oj-button>
+  </div>
+</oj-dialog>
+

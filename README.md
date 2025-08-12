@@ -2409,13 +2409,22 @@ Authorization
 Spring-starter-security
 
 
+JS
+
+    function ListVisitorsViewModel(params) {
+
+var self = this;
+      self.router = params && params.parentRouter;
 
 
+  goToSavePage = () => {
+        alert("Navigating to Add Visitor");
+        self.router.go({ path : "addVisitors"});
+      }
 
+HTML
 
-
-
-
+<oj-button on-oj-action="[[goToSavePage]]">Add Visitor</oj-button>
 
 
 
@@ -2512,20 +2521,52 @@ Mobile Number :	[		]
 
 
 
+Use case : Fetch and Print visitors information in an ojet app from REST API
+
+
+http://localhost:9090/visitors
+
+
+ netstat -ano | findstr 35729
+taskkill /PID 13252 /F
 
 
 
 
 
+Spliterator (Java SE)
+Purpose: A special iterator for traversing and partitioning elements in a source, designed for parallelism.
 
+Introduced: Java 8 (java.util.Spliterator).
 
+Key features:
 
+Can split a data source into multiple parts for parallel processing (often used internally by Java Streams).
 
+Supports characteristics like ORDERED, SORTED, SIZED, IMMUTABLE, etc.
 
+Works with tryAdvance() and trySplit() methods.
 
+Example:
 
+java
+Copy
+Edit
+import java.util.*;
+import java.util.stream.StreamSupport;
 
+public class SpliteratorExample {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("A", "B", "C", "D", "E");
 
+        Spliterator<String> spliterator = list.spliterator();
+        Spliterator<String> other = spliterator.trySplit(); // split for parallel work
+
+        spliterator.forEachRemaining(System.out::println); // First half
+        System.out.println("---");
+        other.forEachRemaining(System.out::println); // Second half
+    }
+}
 
 
 

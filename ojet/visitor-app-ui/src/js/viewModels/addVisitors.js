@@ -11,12 +11,19 @@ define([
 ],
   function (ko, ArrayDataProvider, AsyncLengthValidator, RegExpValidator) {
 
-    function AddVisitorsViewModel() {
+    function AddVisitorsViewModel(params) {
 
       this.visitorId = ko.observable("");
       this.visitorName = ko.observable("");
       this.purpose = ko.observable("");
       this.mobileNumber = ko.observable("");
+
+      var self = this;
+      // Router passed from main
+      self.router = params && params.parentRouter;
+
+
+
       this.isFormInvalid = ko.observable(true);
       this.saveButtonDisabled = ko.observable(true);
       this.mobileValidator = new RegExpValidator({
@@ -38,11 +45,11 @@ define([
         console.log(" Before Valid called " + event.detail.value + " Form status :" + this.isFormInvalid)
         this.isFormInvalid(event.detail.value !== 'valid');
         console.log("After Valid called " + event.detail.value + " Form status :" + this.isFormInvalid)
-       
+
       };
 
 
-      this.saveVisitor = function () {
+      this.saveVisitor = async () => {
         let group = document.getElementById('visitorForm');
         if (group.valid !== 'valid') {
           group.showMessages();
@@ -56,6 +63,32 @@ define([
           mobileNumber: this.mobileNumber(),
           purpose: this.purpose()
         });
+
+
+        const visitior = {
+          visitorId: this.visitorId(),
+          visitorName: this.visitorName(),
+          mobileNumber: this.mobileNumber(),
+          purpose: this.purpose(),
+        };
+        url = "http://localhost:9090/visitors"
+        const request = new Request(url, {
+          headers: new Headers({
+            "Content-type": "application/json; charset=UTF-8",
+          }),
+          body: JSON.stringify(visitior),
+          method: "POST",
+        });
+        const response = await fetch(request);
+        console.log("Visitor saved successfully");
+        alert("Visitor Saved successfully")
+        if (self.router) {
+          self.router.go({ path: 'listVisitors' }); // Navigate after saving
+        }
+        else {
+          console.log("Self router is not defined")
+        }
+
       }
 
 

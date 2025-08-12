@@ -16,7 +16,7 @@
   "unversioned": true,
   "defaultBrowser": "chrome",
   "sassVer": "1.80.5",
-  "defaultTheme": "redwood",
+  "defaultTheme": "ofssTheme",
   "fontUrl": "https://static.oracle.com/cdn/fnd/gallery/2404.0.0/images/iconfont/ojuxIconFont.min.css",
   "typescriptLibraries": "typescript@5.7.2 yargs-parser@~13.1.2",
   "jsdocLibraries": "jsdoc@3.5.5",
