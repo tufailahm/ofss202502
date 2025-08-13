@@ -5,15 +5,15 @@ management:
         include: health,info,beans,env
 spring:
   datasource:
-    username: postgres
-    url: jdbc:postgresql://localhost:5432/postgres
-    driverClassName: org.postgresql.Driver
+    username: system
+    url: jdbc:oracle:thin:@10.120.93.4:1521:free
+    driverClassName: oracle.jdbc.driver.OracleDriver
     password: root
   jpa:
     generate-ddl: 'true'
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.OracleDialect
     hibernate:
       ddl-auto: update
   application:
